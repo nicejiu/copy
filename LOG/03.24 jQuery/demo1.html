@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="demo"></div>
+<input type="button" value="stop">
+<script src="jquery.min.js"></script>
+<script>
+    // 队列
+    // queue() dequeue()  clearQueue()
+    // queue
+    // 1. 返回当前元素的动画队列
+    // $().queue()  $().queue("fx") $().queue("foo");
+    // 2. 在队列的末尾添加一个函数
+    // $().queue(function(){})  $().queue("fx",function(){})  $().queue("foo",function(){});
+    // 3. 自己定义一个完整的队列
+    // $().queue("name",[funciton(){},function(){}])
+    //jQuery.fx.interval=100;
+    $(".demo").click(function () {
+        $(".demo")
+            .fadeOut(1000)
+            .fadeIn(1000)
+            .delay(1000)
+            .slideUp(1000)
+            .slideDown(1000)
+            .delay(1000)
+            .hide(1000)
+            .show(1000)
+            .animate({width: 300}, 3000)
+            .queue(function () {
+                $(this).css("background", "blue").dequeue();
+            })
+            .animate({width:100})
+        console.log($(".demo").queue());
+    });
+    let arr = [
+        function () {
+            setTimeout(function () {
+                $(".demo").css("background", "yellow");
+                out();
+            }, 1000);
+        },
+        function () {
+            setTimeout(function () {
+                $(".demo").css("background", "blue");
+                out();
+            }, 1000);
+        },
+        function () {
+            setTimeout(function () {
+                $(".demo").css("background", "green");
+                out();
+            }, 1000);
+        }
+    ];
+
+    $(".demo").queue('fn',arr);
+    $(":button").click(function(){
+        //$(".demo").stop(true,true);
+        $(".demo").finish();
+        //立即将全部动画完成
+    });
+    // function out(){
+    //     $(".demo").dequeue("fn");
+    // }
+    // out();
+</script>
+</body>
+</html>

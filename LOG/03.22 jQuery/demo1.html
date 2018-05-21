@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+<script src="jquery.min.js"></script>
+<script>
+    // let divs=document.querySelectorAll("div");
+    // divs.forEach(function(ele,index){
+    //     ele.style.background="blue";
+    //     ele.innerHTML=index+1;
+    //     ele.onclick=function(){
+    //         alert(index);
+    //     }
+    // })
+
+    // var divs=document.getElementsByTagName("div");
+    // for(var i=0;i<divs.length;i++){
+    //     divs[i].style.background="blue";
+    //     divs[i].innerHTML=i+1;
+    //     divs[i].index=i;
+    //     divs[i].onclick=function(){
+    //         alert(this.index);
+    //     }
+    // }
+    // getComputedStype   currentStyle
+    // addEventListener   attachEvent
+    // ...
+    // 1. 兼容旧的浏览器
+    // 2. 简化语法
+    // 1 获取元素
+    // 2 单一的元素  还是集合  操作方式是一样的
+    // function $(selector){
+    //     return document.querySelectorAll(selector)
+    // }
+    // let divs=$("div")
+    function Human() {
+        this.arms = 2;
+    }
+
+    Human.prototype.say = function () {
+        console.log("说话");
+    }
+    var human = new Human();
+    // console.log(human.arms);
+    // human.say();
+
+    //强大的查询(获取)功能
+    //隐式的循环
+    //链式调用
+    // function jQuery(selector) {
+    //     var obj = this.get(selector);
+    //     for (var i = 0; i < obj.length; i++) {
+    //         this[i] = obj[i];
+    //     }
+    //     this.length = obj.length;
+    // }
+    //
+    // jQuery.prototype = {
+    //     get: function (selector) {
+    //         return document.querySelectorAll(selector);
+    //     },
+    //     each: function (callback) {
+    //         for (var i = 0; i < this.length; i++) {
+    //             callback.call(this[i],i, this[i]);
+    //         }
+    //         return this;
+    //     },
+    //     html: function (val) {
+    //         this.each(function (index, ele) {
+    //             ele.innerHTML = val;
+    //         })
+    //         return this;
+    //     },
+    //     css:function(attr,val){
+    //         this.each(function(index,ele){
+    //             ele.style[attr]=val;
+    //         });
+    //         return this;
+    //     },
+    //     click:function(callback){
+    //         this.each(function(index,ele){
+    //             ele.onclick=function(){
+    //                 callback();
+    //             }
+    //         })
+    //         return this;
+    //     }
+    // };
+    //
+    // function $(selector) {
+    //     var obj = new jQuery(selector);
+    //     return obj;
+    // }
+
+    // $("div").html("123").css("background","blue").click(function(){
+    //     alert(1);
+    // })
+    // jquery 1.5  ie6-ie8
+    // jquery 2.x  不支持旧的浏览器
+    // jquery 3.x  不支持旧的浏览器  对于内部代码的实现做了更新
+    // api
+</script>
+</html>

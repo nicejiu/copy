@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .floatingwindow {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #000;
+            background: url(1.png);
+            background-size: cover;
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+<div class="floatingwindow"></div>
+</body>
+<script>
+    let floatingWindow = document.querySelector(".floatingwindow");
+    let windowWidth=window.innerWidth;
+    let windowHeight=window.innerHeight;
+    let divWidth=floatingWindow.offsetWidth;
+    let divHeight=floatingWindow.offsetHeight;
+    let lefts=(windowWidth-divWidth)/2;
+    let tops=(windowHeight-divHeight)/2;
+    let startX=lefts;
+    let startY=tops;
+    floatingWindow.style.left=lefts+"px";
+    floatingWindow.style.top=tops+"px";
+    let speedX=5;
+    let speedY=5;
+    let maxTop=windowHeight-divHeight;
+    let maxLeft=windowWidth-divWidth;
+    let t=setInterval(function(){
+        lefts+=speedX;
+        tops+=speedY;
+        if(lefts>maxLeft||lefts<0){
+            speedX*=-1;
+        }
+        if(tops>maxTop||tops<0){
+            speedY*=-1;
+        }
+        floatingWindow.style.left=lefts+"px";
+        floatingWindow.style.top=tops+"px";
+    },25);
+    floatingWindow.onmouseenter=function(){
+        clearInterval(t);
+    };
+    floatingWindow.onclick=function(){
+        this.style.transition="all .5s linear";
+        this.style.transform="scale(2,2)";
+        this.style.left=startX+"px";
+        this.style.top=startY+"px";
+    };
+    floatingWindow.addEventListener("transitionend",function(){
+       this.onclick=function(){
+           this.style.display="none";
+       }
+    });
+</script>
+</html>

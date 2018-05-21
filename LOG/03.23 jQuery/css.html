@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 0 auto;
+            position: absolute;
+            margin-left:100px;
+            left:20px;top:20px;
+            border:10px solid #000;
+            padding:10px;
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="demo"></div>
+</div>
+<script src="jquery.min.js"></script>
+<script>
+    // offsetLeft offsetTop
+    // offset     position // 定位 left top
+    // console.log($(".demo").offset());
+    // console.log($(".demo").position());
+    // scrollLeft  scrollLeft()  scrollTop  scrollTop()
+    // $(window).scroll(function(){
+    //     console.log($(window).scrollTop());
+    //     console.log(document.documentElement.scrollTop);
+    // })
+    // console.log($(".demo").width());
+    // console.log($(".demo").innerWidth());
+    // console.log($(".demo").outerWidth());//offsetWidth
+    // console.log($(".demo").outerWidth(true));
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="">
+    <input type="text" required pattern="\d{17}(\d|x)">
+    <input type="submit">
+</form>
+<script>
+    {
+        let str = "       u e   k    ";
+        // str=str.replace(/^\s*/,"");
+        // str=str.replace(/\s*$/,"")
+        // str=str.replace(/^\s*|\s*$/g,"");
+        // str=str.replace(/\s+/g,"");
+        // console.log(str);
+    }
+    {
+        // 5   11   10000
+        let qqReg = /^[1-9]\d{4,10}$/;
+        console.log(qqReg.test("10000"));
+        console.log(qqReg.test("123456678"));
+        console.log(qqReg.test("023456678"));
+    }
+    {
+        //变量名  开始 字母 下划线 $   字母 数字 下划线 $
+        let nameReg = /^[a-zA-Z_\$][a-zA-Z0-9_\$]*$/;
+        console.log(nameReg.test("a"));
+        console.log(nameReg.test("_a"));
+        console.log(nameReg.test("$111"));
+        console.log(nameReg.test("_$111"));
+        console.log(nameReg.test("1111"));
+        console.log(nameReg.test("*111"));
+    }
+    {
+        //  #111  #fff #123456  #abcdef #aacc11  #FFF
+        let colorReg=/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+        console.log(colorReg.test("#111"));
+        console.log(colorReg.test("#fff"));
+        console.log(colorReg.test("#123456"));
+        console.log(colorReg.test("#12345o"));
+    }
+    {
+        let str="aaaabbbbcccc";
+        str=str.replace(/a+?/,"");
+        console.log(str);
+    }
+    {
+        let str="hellouek2asdhaksdhaksdhuek2";
+        let reg=/^(?:hello)(uek\d).*\1/;
+        console.log(reg.test(str));
+    }
+    {
+        let str="asuekkduek1uek2uek3";
+        let reg=/uek(?!\d)/g;
+        console.log(reg.exec(str));
+    }
+    {
+        let str="asdh0sa2dhk3asd";
+        console.log(str.search(/\d/));
+        console.log(str.match(/\d/));
+        console.log(str.split(/\d/));
+    }
+    {
+        // 1. 补充 细化
+        // 2. 讲程序
+    }
+</script>
+</body>
+</html>

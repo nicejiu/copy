@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo1{
+            width:300px;
+            height:300px;
+            background:red;
+            margin:0 auto;
+        }
+        .demo2{
+            width:100px;
+            height:100px;
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+   <div class="demo1">
+       <div class="demo2"></div>
+   </div>
+</body>
+<script>
+    let demo1=document.querySelector(".demo1");
+    let demo2=document.querySelector(".demo2");
+    //阻止浏览器默认行为
+    // demo1.onmouseover=function(){
+    //     console.log("demo1的over事件");
+    // };
+    // demo1.onmouseout=function(e){
+    //     console.log("demo1的out事件");
+    // };
+    // demo2.onmouseover=function(e){
+    //     e.stopPropagation();
+    //     console.log("demo2的over事件")
+    // };
+    // demo2.onmouseout=function(e){
+    //     e.stopPropagation();
+    //     console.log("demo2的out事件")
+    // };
+    demo1.onmouseenter=function(){
+        console.log("demo1的enter事件")
+    };
+    demo1.onmouseleave=function(){
+        console.log("demo1的leave事件")
+    };
+    demo2.onmouseenter=function(){
+        console.log("demo2的enter事件")
+    };
+    demo2.onmouseleave=function(){
+        console.log("demo2的leave事件")
+    };
+</script>
+</html>

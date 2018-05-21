@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .totop {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+            cursor: pointer;
+        }
+
+        .topBar {
+            position: fixed;
+            width: 100%;
+            height: 40px;
+            background: yellow;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        .leftBar {
+            width: 100px;
+            height: 400px;
+            background: Red;
+            position: fixed;
+            left: 50%;
+            bottom: 100px;
+            display: none;
+            margin-left: -695px;
+        }
+
+        .tips {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background: #ccc;
+            cursor: pointer;
+        }
+
+        .tips:hover {
+            background: #c8c800;
+            color: #fff;
+        }
+
+        .tips.active {
+            background: #c8c800;
+            color: #fff;
+        }
+
+        .container {
+            width: 1190px;
+            height: 500px;
+            margin: 30px auto;
+            border: 1px solid red;
+            text-align: center;
+            line-height: 500px;
+            font-size: 30px;
+        }
+
+        .top {
+            height: 900px;
+        }
+    </style>
+</head>
+<body>
+<img src="xmad_15203193699103_fOLUs.jpg" alt="">
+<div class="totop"></div>
+<div class="topBar"></div>
+<div class="leftBar">
+    <div class="tips active">1</div>
+    <div class="tips">2</div>
+    <div class="tips">3</div>
+    <div class="tips">4</div>
+    <div class="tips">5</div>
+    <div class="tips">6</div>
+    <div class="tips">7</div>
+    <div class="tips">8</div>
+</div>
+<div class="top"></div>
+<div class="container">1</div>
+<div class="container">2</div>
+<div class="container">3</div>
+<div class="container">4</div>
+<div class="container">5</div>
+<div class="container">6</div>
+<div class="container">7</div>
+<div class="container">8</div>
+<div class="top"></div>
+</body>
+<script>
+    {
+        let leftBar = document.querySelector(".leftBar");
+        let topBar = document.querySelector(".topBar");
+        window.onscroll = function () {
+            let st = document.documentElement.scrollTop;
+
+            if (st > 700) {
+                topBar.style.display = "block";
+            } else {
+                topBar.style.display = "none";
+            }
+
+            if (st > 1200) {
+                leftBar.style.display = "block";
+            } else {
+                leftBar.style.display = "none";
+            }
+        }
+    }
+    {
+        let totop = document.querySelector(".totop");
+        totop.onclick = function () {
+            let st = document.documentElement.scrollTop;
+            let speed = 300;
+            let t = setInterval(function () {
+                st -= speed;
+                if (st <= 0) {
+                    st = 0;
+                    clearInterval(t);
+                }
+                document.documentElement.scrollTop = st;
+            }, 25)
+        }
+    }
+    {
+        let tips = document.querySelectorAll(".tips");
+        let containers = document.querySelectorAll(".container");
+        let flag = true;
+        tips.forEach(function (ele, index) {
+            ele.onclick = function () {
+                flag=false;
+                let ot = containers[index].offsetTop - 150;
+                let now = document.documentElement.scrollTop;
+                let speed = (ot - now) / 8;
+                let n = 0;
+                let t = setInterval(function () {
+                    now += speed;
+                    n++;
+                    if (n === 8) {
+                        clearInterval(t);
+                        flag=true;
+                    }
+                    document.documentElement.scrollTop = now;
+                }, 25)
+            }
+        });
+        window.addEventListener("scroll", function () {
+            if (flag) {
+                let st = document.documentElement.scrollTop;
+                containers.forEach(function (ele, index) {
+                    if (st >= ele.offsetTop - 150) {
+                        for (let i = 0; i < tips.length; i++) {
+                            tips[i].classList.remove('active');
+                        }
+                        tips[index].classList.add("active");
+                    }
+                })
+            }
+        })
+    }
+</script>
+</html>

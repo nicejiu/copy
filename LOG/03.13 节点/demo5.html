@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .scene {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: #eee;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="scene"></div>
+</body>
+<script>
+    let arr = ["HTML", "CSS", "JavaScript", "AJAX", "Vue", "Nodejs", "PHP", "MySQL", "Bootstrap", "express", "Antd", "HTTP", "TCP/IP", "Socket", "Less", "npm", "MVC", "react", "jQuery", "element", "Webpack", "Git"];
+
+    function getColor() {
+        let arr = ["3", "6", "9", "C"];
+        let color = "#";
+        for (let i = 0; i < 3; i++) {
+            color += arr[Math.floor(Math.random() * arr.length)];
+        }
+        return color;
+    }
+
+    function checkPos(l, t) {
+        return pos.some(function (data) {
+            if (l > data.l - 120 && l < data.l + 120 && t > data.t - 70 && t < data.t + 70) {
+                return true;
+            }
+        });
+    }
+
+    let docF = document.createDocumentFragment();
+    let pos = [];
+    let divArr = arr.map(function (val) {
+        let newdiv = document.createElement("div");
+        let randomLeft, randomTop;
+        do {
+            randomLeft = Math.random() * (window.innerWidth - 120);
+            randomTop = Math.random() * (window.innerHeight - 70);
+        } while (checkPos(randomLeft, randomTop));
+        pos.push({l: randomLeft, t: randomTop, speed: 5 + Math.random() * 5});
+        newdiv.style.cssText = `width:120px;height:70px;background:${getColor()};position:absolute;left:${randomLeft}px;top:${randomTop}px;border-radius:35px;text-align:center;line-height:70px;font-size:16px;color:#111;font-weight:bold;`;
+        newdiv.innerHTML = val;
+        docF.appendChild(newdiv);
+        return newdiv;
+    });
+    let scene = document.querySelector(".scene");
+    scene.appendChild(docF);
+    setInterval(function () {
+        divArr.forEach(function (ele, index) {
+            //1
+            // pos[index].l += 5;
+            // if(pos[index].l>window.innerWidth){
+            //     pos[index].l=-120;
+            // }
+            // ele.style.left=pos[index].l+"px";
+            //2
+            // pos[index].l -= 5;
+            // if(pos[index].l<-120){
+            //     pos[index].l=window.innerWidth;
+            // }
+            // ele.style.left=pos[index].l+"px";
+            //3
+            // pos[index].l += pos[index].speed;
+            // if (pos[index].l > window.innerWidth-120||pos[index].l < 0) {
+            //     pos[index].speed*=-1;
+            // }
+            // ele.style.left = pos[index].l + "px";
+            //4
+            if (index < pos.length / 2) {
+                pos[index].l += pos[index].speed;
+                if (pos[index].l > window.innerWidth - 120 || pos[index].l < 0) {
+                    pos[index].speed *= -1;
+                }
+                ele.style.left = pos[index].l + "px";
+            } else {
+                pos[index].t += pos[index].speed;
+                if (pos[index].t > window.innerHeight - 70 || pos[index].t < 0) {
+                    pos[index].speed *= -1;
+                }
+                ele.style.top = pos[index].t + "px";
+            }
+        })
+    }, 50)
+
+</script>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let obj = {
+            name: "zhangsan",
+            age: 18,
+            grades: {math: 90, english: 80},
+            friends: [{name: "a", age: 10}, {name: "b", age: 19}]
+        };
+        // 拷贝
+        // let obj2=obj;
+        // obj2.age=19;
+        // console.log(obj);
+        // let obj2={};
+        // 浅拷贝
+        // for(let i in obj){
+        //     if(typeof obj[i]!=="object") {
+        //         obj2[i] = obj[i];
+        //     }else{
+        //         if(Array.isArray(obj[i])){
+        //             obj2[i]=[];
+        //         }else{
+        //             obj2[i]={};
+        //         }
+        //         for(let j in obj[i]){
+        //             obj2[i][j]=obj[i][j];
+        //         }
+        //     }
+        // }
+        //深拷贝
+        function deepCopy(o) {
+            let newobj;
+            if (Array.isArray(o)) {
+                newobj = [];
+            } else {
+                newobj = {};
+            }
+            for (let i in o) {
+                if (typeof o[i] !== "object") {
+                    newobj[i] = o[i];
+                } else {
+                    newobj[i] = deepCopy(o[i]); //递归调用
+                }
+            }
+            return newobj;
+        }
+
+        let obj2 = deepCopy(obj);
+        // console.log(obj2);
+        // obj2.friends[0].name="xiaoming";
+        // console.log(obj);
+    </script>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        div {
+            height: 100px;
+            background: blue;
+        }
+
+        .totop {
+            width: 30px;
+            height: 30px;
+            background: red;
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div class="totop"></div>
+<script src="jquery.min.js"></script>
+<script src="jquery.totop.js"></script>
+<script>
+    // $.fn.extend({
+    //     fn: function () {
+    //         alert(1)
+    //     }
+    // }); //扩展到jquery对象的原型身上
+    // $.extend() //扩展到 jquery/$ 函数身上
+    // $.extend({
+    //     say: function () {
+    //         alert("这是扩展的方法");
+    //     }
+    // });
+    // $.say();
+    // $(".totop").click(function(){
+    //     $("html,body").animate({scrollTop:0},500);
+    // })
+    //$(".totop").totop();
+    $.each();  //forEach() for()   for in
+    let arr = [11, 22, 33, 44, 55, 66];
+    $.each(arr, function (index, value) {
+
+    });
+    //let obj={name:"zhangsan",age:18}
+    $.each(obj, function (key, val) {
+        console.log(val);
+    });
+    let newarr = $.map(arr, function (value, index) {
+        return value * 2;
+    });    //map()
+    console.log(newarr);
+    let newarr2 = $.grep(arr, function (value, index) {
+        return value < 30;
+    });
+    console.log(newarr2);
+    // $.extend({});
+    // $.extend({fn:function(){alert(1)}})
+    // $.fn();
+    // $.getRandom(arr);
+    $.extend({
+        getRandom: function (arr) {
+           var l=arr.length;
+           var num=Math.random()*l
+           var pos=Math.floor(num);
+           return arr[pos];
+        }
+    });
+    console.log($.getRandom(arr));
+</script>
+</body>
+</html>

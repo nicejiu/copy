@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //ES6 function
+        //1 函数的默认参数
+        function table(rows = 10, cols = 10, color = "red") {
+            console.log(rows, cols, color);
+        }
+
+        table(3, 3, "blue");
+        table(5, 5);
+        table(1);
+        //2 箭头函数
+        var arr = [1, 2, 3, 4];
+        // var newarr = arr.map(function (v) {
+        //     return v * v;
+        // })
+        var newarr = arr.map(v => v * v);
+        // var newarr2 = arr.filter(function (v) {
+        //     return v < 3;
+        // });
+        var newarr2 = arr.filter(v => v < 3)
+
+        var sum=function(a,b){
+            return a+b;
+        };
+        var sum=(a,b)=>a+b;
+
+        var getPI=function(){
+            return 3.1415926;
+        };
+        var getPI=()=>3.1415926;
+
+        var fn=function(n){
+            alert(n);
+            return n;
+        };
+        var fn=n=>{
+            console.log(this)
+            return n;
+        };
+        fn();
+        var fn2=function(w,h){
+            return {width:w,height:h}
+        }
+        var fn2=(w,h)=>({width:w,height:h})
+        //1 箭头函数中没有arguments
+        //2 箭头函数不会影响当前this的指向
+        var name="zhangsan";
+        var obj={
+            name:"lisi",
+            fn:function(){
+                console.log(this.name);
+                setInterval(()=>{
+                    console.log(this);
+                    console.log(this.name);
+                },3000)
+            }
+        };
+        //obj.fn();
+        // this
+        // ES5
+    </script>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    var div=document.querySelector("div");
+    var obj={name:"zhangsan"};
+    div.onclick=function(){
+        console.log(this);
+    }.bind(obj);
+    setInterval(function(){
+        console.log(this);
+    }.bind(obj),3000);
+
+</script>
+</html>

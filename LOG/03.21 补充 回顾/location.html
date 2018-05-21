@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="">
+    <input type="text" name="user">
+    <input type="password" name="pass">
+    <input type="submit">
+</form>
+<a href="#aa">锚链接</a>
+    <input type="button" value="百度" onclick="location.href='http://www.baidu.com'">
+ <p id="aa" style="margin-top:2000px;">目标位置</p>
+</body>
+<script>
+    console.log(location);
+    //http://localhost:63342/LOG/03.21%20%E8%A1%A5%E5%85%85%20%E5%9B%9E%E9%A1%BE/location.html?_ijt=9kk4lf7v19820d9l1r20otvkio
+    //https://github.com
+    //http://news.baidu.com/
+    //https://www.baidu.com/s?wd=%E6%89%8B%E6%9C%BA&rsv_spt=1&rsv_iqid=0x8a7eb2c500025db0&issp=1&f=3&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=9&rsv_sug1=11&rsv_sug7=100&rsv_sug2=0&prefixsug=souj&rsp=1&inputT=6468&rsv_sug4=7848
+    //http://localhost:63342/LOG/03.21%20%E8%A1%A5%E5%85%85%20%E5%9B%9E%E9%A1%BE/location.html?user=123&pass=123
+
+    // URL 统一资源定位符  URI 统一资源标示符
+    // URI 包括URL
+
+    // http https  协议
+    // localhost www.github.com  www.news.baidu.com 域名
+    // :63342 端口号  80
+    // /LOG/03.21%20%E8%A1%A5%E5%85%85%20%E5%9B%9E%E9%A1%BE/location.html 路径
+    // ?a=b&c=d&e=f 查询字符串
+    // #aa  锚链接  hash
+   // http  tcp  ip
+    console.log(location.protocol);
+    console.log(location.hostname);
+    console.log(location.port);
+    console.log(location.host);
+    console.log(location.pathname);
+    console.log(location.search);
+    console.log(location.hash);
+    console.log(location.href);
+    // 所有的这些属性都是可以设置的
+   document.body.onclick=function() {
+      // location.assign("hash.html"); //加载新页面
+      // location.replace("hash.html");//加载新页面 不产生历史记录
+      // location.reload();// 重新加载当前站点的资源
+   };
+   window.onhashchange=function(){
+       console.log(1)
+   }
+</script>
+</html>

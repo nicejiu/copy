@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background:Red;
+        }
+    </style>
+</head>
+<body>
+<div id="aa">
+    <div>
+        <div class="demo"></div>
+    </div>
+</div>
+<div class="one">hello</div>
+<div class="one"></div>
+<div></div>
+<div></div>
+<p class="p1">
+</p>
+<p class="p2"></p>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<input type="text">
+<input type="text">
+<input type="text" autofocus>
+<script src="jquery.min.js"></script>
+<script>
+    console.log($("#aa"));
+    console.log($("div"));
+    console.log($(".one"));
+    console.log($("*"));
+    console.log($("div,p"));
+    console.log($("#aa div"));
+    console.log($("#aa>div"));
+    console.log($("div+p"));
+    console.log($("div~p"));
+    console.log($("div:first"));
+    console.log($("div:not(.one)"));
+    // $("ul>li:even").css("background","red");
+    // $("ul>li:odd").css("background","blue");
+    // $("ul>li:eq(2)").css("background","red");
+    //  $("ul>li:gt(5)").css("background","red");
+    //  $("ul>li:lt(5)").css("background","blue");
+    // console.log($("ul>li"));
+     $("ul>li:last").css("background","blue");
+     console.log($(":header"))
+     $(":focus").css("background","red");
+     console.log($(":root"));
+     console.log($(":target"));
+     console.log($("div:contains(hello)"));
+     console.log($(":empty"));
+     console.log($("div:has(.demo)"));
+</script>
+</body>
+</html>

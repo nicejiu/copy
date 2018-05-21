@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .section{
+            width:1000px;
+            height:500px;
+            margin:50px auto;
+            border:1px solid red;
+            overflow: hidden;
+        }
+        .section img{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<div class="section"><img data-original="img%20(1).webp" alt=""></div>
+<div class="section"><img data-original="img%20(2).webp" alt=""></div>
+<div class="section"><img data-original="img%20(3).webp" alt=""></div>
+<div class="section"><img data-original="img%20(1).webp" alt=""></div>
+<div class="section"><img data-original="img%20(2).webp" alt=""></div>
+<script src="jquery.min.js"></script>
+<script src="jquery.lazyload.js"></script>
+<script>
+    $("img").lazyload({
+        effect:"slideDown",
+        event:"click"
+    });
+</script>
+</body>
+</html>

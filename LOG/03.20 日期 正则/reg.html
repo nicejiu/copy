@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    {
+        let reg = new RegExp("uek");  //regular expression
+        let reg2 = /^uek/;
+        let str = "3uek1";
+        console.log(reg2.test(str));
+        let reg3 = /uek$/;
+        console.log(reg3.test(str));
+        let reg4 = /^uek$/;
+        console.log(reg4.test(str));
+    }
+    {
+       console.clear();
+       let str="1 uek 8";
+       let reg=/^\d\suek\s\d$/;
+       console.log(reg.test(str));
+    }
+    {
+        console.clear();
+        let str="uek1asdjskduek2sdaksdkuek3";
+        let reg=/uek\d/g;
+        console.log(reg.exec(str));
+        console.log(reg.exec(str));
+        console.log(reg.exec(str));
+        console.log(reg.exec(str));
+    }
+    {
+        console.clear();
+        let str="ashkuek1asdkasjduek2askdkasdhuek3";
+        console.log(str);
+        str=str.replace(/uek\d/g,"");
+        console.log(str);
+    }
+</script>
+</body>
+</html>

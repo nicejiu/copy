@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="get">
+<script src="http://localhost/0330ajax/jquery.min.js"></script>
+<!--1. script 也是在发起网络请求接收响应的一种方式-->
+<!--2. script 标签发起请求是没有跨域的限制的-->
+<!--3. script 也可以请求任意其它类型的文件-->
+<!--4. script 请求回来的数据会默认按照js的语法运行-->
+<script>
+    // ajax 请求是不允许跨域访问的
+    // 同域 cookie localStorage.. 同域原则 同源策略
+    // 协议  域名 端口号 完全一致同域
+    // 1. 在后台程序中设置允许跨域访问
+    // 2. 借助后台程序去请求另一个后台程序的信息
+    // 3. jsonp json with padding
+    function jsonp(settings) {
+         var url=settings.url;
+         var jsonp=settings.jsonp||"callback";
+         var jsonpCallback=settings.jsonpCallback||"j"+new Date().getTime()+"_"+Math.floor(Math.random()*10000000);
+         var success=settings.success;
+         url+="?"+jsonp+"="+jsonpCallback;
+         var script=document.createElement("script");
+         script.src=url;
+         document.head.appendChild(script);
+         window[jsonpCallback]=function(r){
+             success(r);
+             document.head.removeChild(script);
+             delete window[jsonpCallback];
+         }
+    }
+
+    $("input").click(function () {
+        // jsonp({
+        //     url: "http://localhost/0330ajax/select.php",
+        //     success: function (r) {
+        //         console.log(r);
+        //     }
+        // });
+        // 在 jquery 把jsonp请求数据这种方式 也封装到$.ajax函数中了 但是 jsonp 和 ajax 是没关系的
+        $.ajax({
+            url:"http://localhost/0330ajax/select.php",
+            dataType:"jsonp",
+            jsonp:"cb",
+            success:function(r){
+                console.log(r);
+            }
+        })
+    })
+</script>
+</body>
+</html>

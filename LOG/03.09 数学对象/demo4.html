@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1226px;
+            height: 420px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+
+        .item {
+            width: 296px;
+            height: 420px;
+            background: #ccc;
+            overflow: hidden;
+            position: relative;
+            margin-right: 14px;
+            float: left;
+        }
+
+        .item:last-child {
+            margin-right: 0;
+        }
+
+        .inner {
+            width: 2000px;
+            height: 420px;
+            background: #f33;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 1s;
+        }
+
+        .content {
+            width: 296px;
+            height: 420px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 420px;
+            color: #fff;
+            float: left;
+        }
+
+        .prev, .next {
+            width: 30px;
+            height: 30px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            background: #cccccc;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all .5s;
+        }
+
+        .item:hover .prev {
+            opacity: 0.5;
+        }
+
+        .item:hover .next {
+            opacity: 0.5;
+        }
+
+        .prev:hover {
+            opacity: 0.8 !important;
+        }
+
+        .next:hover {
+            opacity: 0.8 !important;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .pagerbox {
+            width: 100%;
+            height: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 40px;
+            background: red;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pager {
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 20px;
+            cursor: pointer;
+        }
+
+        .pager.active {
+            background: yellow;
+        }
+
+        .banner {
+            width: 1226px;
+            height: 460px;
+            background: #ccc;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .sidebar {
+            width: 234px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .label {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .label:hover {
+            background: orange;
+        }
+
+        .menu{
+            width:500px;
+            height:400px;
+            background:#f33;
+            position: absolute;
+            left:234px;
+            top:0;
+            display: none;
+            font-size: 50px;
+            color:#fff;
+        }
+        .box{
+            width:1000px;
+            height:auto;
+            border:1px solid red;
+            margin:0 auto;
+        }
+        .top{
+            width:1000px;
+            height:50px;
+            background:red;
+        }
+        .bottom{
+            width:1000px;
+            height:0px;
+            background: blue;
+            overflow: hidden;
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item">
+        <div class="inner">
+            <div class="content">1</div>
+            <div class="content">2</div>
+            <div class="content">3</div>
+        </div>
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+        <div class="pagerbox">
+            <div class="pager active"></div>
+            <div class="pager"></div>
+            <div class="pager"></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="inner">
+            <div class="content">1</div>
+            <div class="content">2</div>
+            <div class="content">3</div>
+            <div class="content">4</div>
+        </div>
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+        <div class="pagerbox">
+            <div class="pager active"></div>
+            <div class="pager"></div>
+            <div class="pager"></div>
+            <div class="pager"></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="inner">
+            <div class="content">1</div>
+            <div class="content">2</div>
+            <div class="content">3</div>
+        </div>
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+        <div class="pagerbox">
+            <div class="pager active"></div>
+            <div class="pager"></div>
+            <div class="pager"></div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="inner">
+            <div class="content">1</div>
+            <div class="content">2</div>
+            <div class="content">3</div>
+        </div>
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+        <div class="pagerbox">
+            <div class="pager active"></div>
+            <div class="pager"></div>
+            <div class="pager"></div>
+        </div>
+    </div>
+</div>
+<div class="banner">
+    <div class="sidebar">
+        <div class="label">
+            1
+            <div class="menu">1</div>
+        </div>
+        <div class="label">
+            2
+            <div class="menu">2</div>
+        </div>
+        <div class="label">3
+            <div class="menu">3</div>
+        </div>
+        <div class="label">4
+            <div class="menu">4</div>
+        </div>
+        <div class="label">5
+            <div class="menu">5</div>
+        </div>
+    </div>
+</div>
+<div class="box">
+    <div class="top"></div>
+    <div class="bottom"></div>
+</div>
+</body>
+<script>
+    function wheel(parent) {
+        let prev = parent.querySelector(".prev");
+        let next = parent.querySelector(".next");
+        let inner = parent.querySelector(".inner");
+        let contents = parent.querySelectorAll(".content");
+        let pagers = parent.querySelectorAll(".pager");
+        let n = 0;
+        let l = contents.length;
+        next.onclick = function () {
+            n++;
+            if (n === l) {
+                n = l - 1;
+                return;
+            }
+            inner.style.left = -296 * n + "px";
+            pagers[n].classList.add("active");
+            pagers[n - 1].classList.remove("active");
+            obj = pagers[n];
+        };
+        prev.onclick = function () {
+            n--;
+            if (n < 0) {
+                n = 0;
+                return;
+            }
+            inner.style.left = -296 * n + "px";
+            pagers[n].classList.add("active");
+            pagers[n + 1].classList.remove("active");
+            obj = pagers[n];
+        };
+        let obj = pagers[0];
+        pagers.forEach(function (ele, index) {
+            ele.onclick = function () {
+                obj.classList.remove("active");
+                this.classList.add("active");
+                obj = this;
+                inner.style.left = index * -296 + "px";
+                n = index;
+            }
+        })
+    }
+
+    let items = document.querySelectorAll(".item");
+    items.forEach(function (ele) {
+        wheel(ele);
+    });
+    {
+        let labels=document.querySelectorAll(".label");
+        let menus=document.querySelectorAll(".menu");
+        let obj=menus[0];
+        labels.forEach(function(ele,index){
+            ele.onmouseenter=function(){
+                obj.style.display="none";
+                menus[index].style.display="block";
+                obj=menus[index];
+            };
+            ele.onmouseleave=function(){
+                menus[index].style.display="none";
+            };
+        })
+    }
+    {
+       let box=document.querySelector(".box");
+       let top=document.querySelector(".top");
+       let bottom=document.querySelector(".bottom");
+       top.onmouseenter=function(){
+           bottom.style.height="300px";
+       }
+       box.onmouseleave=function(){
+           bottom.style.height="0";
+       }
+    }
+</script>
+</html>

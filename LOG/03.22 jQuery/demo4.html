@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 300px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+
+        .top {
+            width: 600px;
+            height: 30px;
+        }
+
+        .title {
+            width: 200px;
+            height: 29px;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+            border-bottom: 1px solid red;
+            cursor: pointer;
+        }
+
+        .title.active {
+            background: red;
+            color: #fff;
+        }
+
+        .bottom {
+            width: 600px;
+            height: 270px;
+        }
+
+        .content {
+            width: 600px;
+            height: 270px;
+            background: #fff;
+            display: none;
+            font-size: 30px;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .demo {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="top">
+        <div class="title active">1</div>
+        <div class="title">2</div>
+        <div class="title">3</div>
+    </div>
+    <div class="bottom">
+        <div class="content active">1</div>
+        <div class="content">2</div>
+        <div class="content">3</div>
+    </div>
+</div>
+<div class="demo">
+    div
+</div>
+<div class="demo">
+    div
+</div>
+<div class="demo">
+    div
+</div>
+<script src="jquery.min.js"></script>
+<script>
+    $(".title").click(function () {
+        //this.classList.add("active");
+        // this.addClass()
+        // 原生对象==》jquery对象  $(原生对象)
+        // console.log(this);
+        // console.log($(this));
+        //1
+        //$(".title").removeClass("active");
+        //$(this).addClass("active");
+        //2
+        //$(".title").removeClass("active").filter(this).addClass("active");
+        //3
+        $(this).addClass("active").siblings(".active").removeClass("active");
+        //4
+        //$(".title.active").removeClass("active").parent().find(this).addClass("active");
+        var index = $(this).index();
+        $(".content").removeClass("active").eq(index).addClass("active");
+    })
+
+    // innerHTML====>html()
+    //console.log($(".demo").html())
+    //$(".demo").html("1111");
+    $(".demo").html(function (index, oldVal) {
+        return oldVal + (index + 1);
+    })
+    // style getComputedStyle=====>css()
+    console.log($(".demo").css("width"));
+    $(".demo").css("background", "red");
+    // $(".demo").css("width",300);
+    $(".demo").css("width", function (index, oldVal) {
+        return (index + 1) * 100;
+    });
+    $(".demo").css({
+        color:"#fff",
+        fontSize:"16px",
+        textAlign:"center",
+        lineHeight:"100px"
+    });
+    // classList className  ===> addClass() removeClass() toggleClass()
+
+    $(".demo").addClass(function(index,oldVal){
+        return "test"+(index+1);
+    });
+    $(".demo").removeClass(function(index,oldVal){
+        return "test"+(index+1);
+    });
+    //demo.html
+    // 每一个选择器  每一个过滤 筛选 串联的方法
+    // html  css  addClass removeClass
+    // 小案例 + 说明
+    $(".demo1")  // 通过类名获取
+
+</script>
+</body>
+</html>

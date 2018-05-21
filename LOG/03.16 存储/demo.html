@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 客户端存储
+    // cookie
+    // 特点
+    // 1. 保存数据量比较小  4kb  20 键值对
+    // 2. cookie 就是浏览器保存在硬盘中的一个文件
+    // 3. 默认的保存时间是一次会话 但是可以保存任意长的时间
+    // 4. 每一个网站都会保存自己单独的cookie文件
+    // 5. 每一个浏览器会单独保存自己的cookie文件
+    // 6. 同源策略  （协议 域名 端口号 完全一致）
+
+    // 如何使用
+    // document.cookie
+    // 浏览器--检查元素--》application
+   //  let date=new Date();
+   //  date.setDate(20);
+   // document.cookie="name=zhangsan; expires="+date.toGMTString();
+    document.cookie="name=lisi;";
+    document.cookie="age=17";
+    console.log(document.cookie);
+    // localStorage sessionStorage
+    // 特点
+    // 1 保存的数据量比较大  5mb-10mb
+    // 2 localStorage 保存永久性的数据  sessionStrage 只能保存一次会话的数据
+    // 3 操作比cookie要方便很多
+
+
+
+</script>
+</html>

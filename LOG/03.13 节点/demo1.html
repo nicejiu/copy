@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width:300px;
+            height:300px;
+            background:blue;
+            margin:0 auto;
+        }
+        .item{
+            width:80px;
+            height:80px;
+            background:red;
+            font-size: 30px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="one" title="123">
+        123<!--注释1111-->
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+<script>
+   //文档树  文档树模型
+   //console.log(document)
+   //定义了节点 和节点的属性方法
+
+   // js 节点 HTML DOM
+   // 每一个标签都是一个元素节点
+   // 每一个文本都是一个文本节点
+   // 标签的每一个属性都是一个属性节点
+   // 每一个注释都是一个注释节点
+   // 整个文档 称为文档节点
+
+   // 节点也是对象
+   // 属性
+   // 节点的关系属性
+   let item1=document.querySelector(".item:first-child");
+   let box=item1.parentNode;
+   let childs=box.childNodes;
+   let firstChild=box.firstChild;
+   let lastChild=box.lastChild;
+   let firstElement=box.firstElementChild;
+   let lastElement=box.lastElementChild;
+   let nextSibling=item1.nextSibling;
+   let previousSibling=lastElement.previousSibling;
+   let nextElement=item1.nextElementSibling;
+   let previousElement=lastElement.previousElementSibling;
+   let comment=firstChild.nextSibling;
+   let attrNode=box.attributes[0];
+   //节点的信息属性
+   // nodeType nodeName nodeValue
+   console.log("元素节点");
+   console.log(box.nodeType);
+   console.log(box.nodeName);
+   console.log(box.nodeValue);
+   console.log("属性节点");
+   console.log(attrNode.nodeType);
+   console.log(attrNode.nodeName);
+   console.log(attrNode.nodeValue);
+   console.log("文本节点");
+   console.log(firstChild.nodeType);
+   console.log(firstChild.nodeName);
+   console.log(firstChild.nodeValue);
+   console.log("注释节点");
+   console.log(comment.nodeType);
+   console.log(comment.nodeName);
+   console.log(comment.nodeValue);
+   console.log("文档节点");
+   console.log(document.nodeType);
+   console.log(document.nodeName);
+   console.log(document.nodeValue);
+</script>
+</html>

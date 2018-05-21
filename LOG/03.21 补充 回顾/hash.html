@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .inner {
+            transition: all 1s;
+        }
+
+        .section {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .pagerbox {
+            width: 30px;
+            height: 150px;
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            margin-top: -75px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: space-around;
+        }
+
+        .pager {
+            width: 20px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .pager.active {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="inner">
+        <div class="section">1</div>
+        <div class="section">2</div>
+        <div class="section">3</div>
+        <div class="section">4</div>
+        <div class="section">5</div>
+    </div>
+    <div class="pagerbox">
+        <div class="pager active"></div>
+        <div class="pager"></div>
+        <div class="pager"></div>
+        <div class="pager"></div>
+        <div class="pager"></div>
+    </div>
+</div>
+<script>
+    //history   pushState({},"","demo1.html") 在历史记录中添加一条新地址
+    //          replaceState({},"","demo2.html"); 直接替换当前页面的地址
+    let sections = document.querySelectorAll(".section");
+    let inner = document.querySelector(".inner");
+    let pagers = document.querySelectorAll(".pager");
+    sections.forEach(function (ele, index) {
+        ele.style.height = window.innerHeight + "px";
+        ele.style.lineHeight = window.innerHeight + "px";
+    });
+    let h = window.innerHeight;
+    let obj=pagers[0];
+    history.replaceState({index: 0}, "", 0);
+    pagers.forEach(function(ele,index){
+        ele.onclick=function(){
+            obj.classList.remove("active");
+            pagers[index].classList.add("active");
+            obj=ele;
+            inner.style.marginTop=-h*index+"px";
+            history.pushState({index:index},"",index);
+        }
+    });
+    window.onpopstate=function(){
+        let index=history.state.index;
+        obj.classList.remove("active");
+        pagers[index].classList.add("active");
+        obj=pagers[index];
+        inner.style.marginTop=-h*index+"px";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin:0 auto;
+        }
+
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+<div class="demo"></div>
+</body>
+<script>
+    let demo = document.querySelector(".demo");
+    // demo.onclick=function(){
+    //     alert(1);
+    // };
+    // demo.onclick=null;
+    // 单线程
+    function handler() {
+        console.log(1);
+        console.log(1);
+        console.log(1);
+        console.log(1);
+    }
+
+    demo.addEventListener("click", handler);
+    // demo.addEventListener("click",function(){
+    //      console.log(2);
+    //      console.log(2);
+    //      console.log(2);
+    //      console.log(2);
+    // });
+    demo.removeEventListener("click", handler);
+    // 事件对象
+    // 保存事件触发的时候产生的一系列信息
+    demo.onclick = function (e) {
+        // 属性
+        // console.log(e.screenX);
+        // console.log(e.screenY);
+        // console.log(e.clientX);
+        // console.log(e.clientY);
+        // console.log(e.pageX);
+        // console.log(e.pageY);
+        // console.log(e.offsetX);
+        // console.log(e.offsetY);
+        // console.log(e.type); //事件的名称
+    };
+    demo.addEventListener("click",function(e){
+        console.log(e);
+    });
+    window.onkeydown=function(e){
+        console.log(e.keyCode);
+        console.log(e.ctrlKey);
+        // console.log(e.shiftKey);
+        // console.log(e.altKey);
+    }
+</script>
+</html>

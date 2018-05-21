@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li class="one">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li class="two">5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li>1</li>
+    <li class="one">2</li>
+    <li>3</li>
+    <li class="two">4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li class="two">8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<div class="demo active">123</div>
+<div class="box" style="position: relative">
+    <div>
+        <div>
+            <div class="item"></div>
+        </div>
+    </div>
+</div>
+<script src="jquery.min.js"></script>
+<script>
+    let obj = $(".one");
+    let ele = document.querySelector(".one");
+    $("ul>li")
+        .css("border", "1px solid red")
+        // .filter(".one")
+        // .filter(obj)
+        // .filter(ele)
+        // .filter(function(index,ele){
+        //     if(index===0){
+        //         return true;
+        //     }
+        // })
+        .css("background", "blue");
+    // .eq(-1)
+    let div = document.querySelector(".demo");
+    console.log($(".demo").hasClass("active"));
+    console.log($(".demo").is(".active"));
+    console.log($(".demo").is($("div")));
+    console.log($(".demo").is(div));
+    console.log($(".demo").is(function (index, ele) {
+        if (ele.innerHTML === "123") {
+            return true;
+        }
+    }));
+    console.log($("ul>li").map(function (index, ele) {
+        return ele.innerHTML;
+    }));
+    console.log($('ul').has('.one'));
+    console.log($("ul>li").not(".one"));
+    console.log($("ul>li").slice(5, 8));
+    console.clear();
+    console.log($("ul").children(".one"));
+    console.log($(".item").closest(".box"));
+    console.log($(".box").find(".item"));
+    //$(".one").css("background","red").nextUntil(".two").css("background",'yellow');
+    console.log($(".item").offsetParent());
+    console.log($(".one").parent());
+    console.log($('.one').parents());
+    console.log($('.one').parentsUntil("body"));
+    console.log($('.one').siblings());
+    console.log($(".one").add(".two"));
+    console.log($(".one").next().addBack());
+    console.log($(".one").contents());
+    console.log($("ul>li").eq(2).css("background","blue").end().eq(4))
+</script>
+</body>
+</html>

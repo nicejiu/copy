@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr=[1,2,3,4,5];
+    let obj={name:"zhangsan"};
+    // localStorage.data=arr;//toString()
+    // localStorage.object=obj;
+    // console.log(localStorage.object);
+    // ES5 新增对象 JSON 内置的对象 Math
+    // JSON.parse() 将字符串格式转化为对象
+    // JSON.stringify() 将对象转化为字符串格式
+
+
+    // console.log(JSON.parse(str));
+    // console.log(JSON.stringify(obj));
+    let str=JSON.stringify(obj);
+    localStorage.data=str;
+    let obj2=JSON.parse(localStorage.data);
+    console.log(obj2);
+</script>
+</html>

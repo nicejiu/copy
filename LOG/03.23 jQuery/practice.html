@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .totop {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+            cursor: pointer;
+        }
+
+        .topBar {
+            position: fixed;
+            width: 100%;
+            height: 40px;
+            background: yellow;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        .leftBar {
+            width: 100px;
+            height: 400px;
+            background: Red;
+            position: fixed;
+            left: 50%;
+            bottom: 100px;
+            display: none;
+            margin-left: -695px;
+        }
+
+        .tips {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background: #ccc;
+            cursor: pointer;
+        }
+
+        .tips:hover {
+            background: #c8c800;
+            color: #fff;
+        }
+
+        .tips.active {
+            background: #c8c800;
+            color: #fff;
+        }
+
+        .container {
+            width: 1190px;
+            height: 500px;
+            margin: 30px auto;
+            border: 1px solid red;
+            text-align: center;
+            line-height: 500px;
+            font-size: 30px;
+        }
+
+        .top {
+            height: 900px;
+        }
+    </style>
+</head>
+<body>
+<div class="totop"></div>
+<div class="totop"></div>
+<div class="topBar"></div>
+<div class="leftBar">
+    <div class="tips active">1</div>
+    <div class="tips">2</div>
+    <div class="tips">3</div>
+    <div class="tips">4</div>
+    <div class="tips">5</div>
+    <div class="tips">6</div>
+    <div class="tips">7</div>
+    <div class="tips">8</div>
+</div>
+<div class="top"></div>
+<div class="container">1</div>
+<div class="container">2</div>
+<div class="container">3</div>
+<div class="container">4</div>
+<div class="container">5</div>
+<div class="container">6</div>
+<div class="container">7</div>
+<div class="container">8</div>
+<div class="top"></div>
+<script src="jquery.min.js"></script>
+<script>
+    $(".totop").click(function(){
+         $("html,body").animate({scrollTop:0})
+    });
+    $(window).scroll(function(){
+       let st=$(window).scrollTop();
+       if(st>700){
+           $(".topBar").show();
+       }else{
+           $(".topBar").hide();
+       }
+       if(st>1200){
+           $(".leftBar").show();
+       }else{
+           $(".leftBar").hide();
+       }
+    });
+    $(".tips").click(function(){
+        let index=$(this).index(".tips");
+        let ot=$(".container").eq(index).offset().top-150;
+        $("html,body").animate({scrollTop:ot},200);
+    });
+    $(window).scroll(function(){
+        let st=$(window).scrollTop();
+        $(".container").each(function(index,ele){
+            if(st>=$(this).offset().top-150){
+               $(".tips").removeClass("active").eq(index).addClass("active");
+            }
+        })
+    })
+</script>
+</body>
+</html>

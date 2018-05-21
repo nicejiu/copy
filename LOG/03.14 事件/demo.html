@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item {
+            width: 100px;
+            height: 100px;
+            background: #f66;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            margin: 10px;
+            transition: all 1s;
+        }
+
+        .item:nth-child(4):hover {
+            width: 200px;
+        }
+
+        .item:nth-child(11) {
+            animation: rotate 3s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script>
+        // 文档内容加载完成事件
+        window.onload = function () {
+            var items = document.querySelectorAll(".item");
+            console.log(items)
+        }
+    </script>
+</head>
+<body>
+<div class="item">0</div>
+<div class="item">1</div>
+<div class="item">2</div>
+<div class="item">3</div>
+<div class="item">4</div>
+<div class="item">5</div>
+<div class="item">6</div>
+<div class="item">7</div>
+<div class="item">8</div>
+<div class="item">9</div>
+<div class="item">10</div>
+<input type="text" id="text" value="请输入">
+</body>
+<script>
+    let divs = document.querySelectorAll(".item");
+    let input = document.querySelector("#text");
+    divs[0].onclick = function () {
+        console.log("这是一个鼠标单击事件");
+    };
+    divs[1].onmouseenter = function () {
+        console.log("这是一个鼠标进入事件");
+    };
+    divs[2].onmouseleave = function () {
+        console.log("这是一个鼠标离开事件");
+    };
+    divs[3].addEventListener("transitionend", function () {
+        console.log("这是一个过渡结束事件");
+    });
+    window.onscroll = function () {
+        console.log("这是一个滚动事件");
+    };
+    input.onchange = function () {
+        console.log("改变事件");
+    };
+    divs[4].ondblclick = function () {
+        console.log("这是一个鼠标双击事件");
+    };
+    divs[4].onclick = function () {
+        console.log("这是一个鼠标单击事件");
+    };
+    divs[5].onmousedown = function () {
+        console.log("这是一个鼠标按下的事件");
+    };
+    divs[6].onmouseup = function () {
+        console.log("这是一个鼠标抬起事件");
+    };
+    divs[7].onmousemove = function () {
+        console.log("这是一个鼠标移动事件");
+    };
+    divs[8].onmouseover = function () {
+        console.log("这也是一个鼠标进入事件");
+    };
+    divs[8].onmouseout = function () {
+        console.log("这也是一个鼠标离开事件");
+    };
+    // onmousewheel google    DOMMouseScroll
+    // onwheel
+    divs[9].onwheel = function () {
+        console.log("这是一个滚轮事件");
+    };
+    //事件 用户对于浏览器的操作  浏览器自身行为
+    input.onfocus = function () {
+        console.log("这是一个获得焦点事件");
+    };
+    input.onblur = function () {
+        console.log("这是一个失去焦点事件");
+    };
+    // 键盘事件
+    // window document body  可以输入的元素
+    window.onkeydown = function () {
+        console.log("键盘按下事件");
+    };
+    window.onkeypress = function () {
+        console.log("键盘按压事件");
+    };
+    window.onkeyup = function () {
+        console.log("键盘抬起事件");
+    };
+    //动画结束事件
+    divs[10].addEventListener("animationend", function () {
+        console.log("动画效果结束");
+    })
+
+</script>
+</html>
